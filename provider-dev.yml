@@ -1,0 +1,25 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: provider-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  type-aliases-package: com.baoman.pojo
+
+#注册到Eureka注册中心 (第二步)
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://localhost:10086/eureka,http://localhost:10087/eureka
+      defaultZone: http://localhost:10086/eureka
+  instance:
+    # 服务续约renew的两个重要参数：
+    lease-expiration-duration-in-seconds: 10 #服务失效时间，默认值90秒
+    lease-renewal-interval-in-seconds: 5   #服务续约（renew）的间隔（心跳频率），默认30秒
